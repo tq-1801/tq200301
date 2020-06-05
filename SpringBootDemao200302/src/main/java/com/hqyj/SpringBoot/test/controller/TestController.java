@@ -1,5 +1,7 @@
 package com.hqyj.SpringBoot.test.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,20 @@ public class TestController {
 	
 	@Autowired
 	private ApplicationTest ApplicationTest;
+	
+	private static final Logger LOGGR = LoggerFactory.getLogger(TestController.class);
+
+	@RequestMapping("/test/log")
+	@ResponseBody
+	public String logTest() {
+		//TRACE<DEBUG<INFO<WARN<ERROR
+		LOGGR.trace("This is TRACE log");
+		LOGGR.debug("This is DEBUG log");
+		LOGGR.info("This is INFO log");
+		LOGGR.warn("This is WARN log");
+		LOGGR.error("This is ERROR log");
+		return "This is log test.";
+	}
 /**
  * 127.0.0.1:8085/test/config
  */

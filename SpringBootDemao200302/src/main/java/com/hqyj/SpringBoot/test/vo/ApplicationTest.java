@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @PropertySource("classpath:config/applicationTest.properties")
-@ConfigurationProperties(prefix = "com.test")
+@ConfigurationProperties(prefix ="com.test")
 public class ApplicationTest {
 	private String name1;
 	private int age1;
