@@ -18,4 +18,8 @@ PageInfo<City> getCitiesByPage(int currentPage, int pageSize, int countryId);
 PageInfo<City> getCitiesBySearchVo(SearchVo searchVo);
 
 Result<City> insetCity(City city);
+
+Result<City> updateCity(City city);
+
+Result<Object> deleteCity(int cityId);
 }

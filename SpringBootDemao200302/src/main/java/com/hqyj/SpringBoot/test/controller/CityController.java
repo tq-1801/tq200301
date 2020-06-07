@@ -3,8 +3,11 @@ package com.hqyj.SpringBoot.test.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +36,7 @@ public class CityController {
 	}
 	/**
 	 * 127.0.0.1/api/city?cityName=Shanghai&localCityName=1111 ---- get
+	 * 基本查询
 	 */
 	@RequestMapping("/city")
 	public City getCityByName(@RequestParam String cityName, @RequestParam String localCityName) {
@@ -41,6 +45,7 @@ public class CityController {
 	
 	/**
 	 * 127.0.0.1/api/cities?currentPage=1&pageSize=5&countryId=522
+	 * 分页查询
 	 */
 	@RequestMapping("/cities")
 	public PageInfo<City> getCitiesByPage(@RequestParam int currentPage, 
@@ -50,6 +55,7 @@ public class CityController {
 	
 	/**
 	 * 127.0.0.1/api/cities ---- post
+	 * 多条件查询
 	 */
 //	@RequestMapping(value = "/cities", method = RequestMethod.POST, consumes = "apllication/json")
 	@PostMapping(value = "/cities", consumes = "application/json")
@@ -58,9 +64,28 @@ public class CityController {
 	}
 	/**
 	 * 127.0.0.1/api/city ---- post
+	 * 增加
 	 */
 	@PostMapping(value = "/city", consumes = "application/json")
 	public Result<City> insetCity(@RequestBody City city) {
 		return cityService.insetCity(city);
+	}
+	
+	/**
+	 * 127.0.0.1/api/city ---- put
+	 * 修改
+	 */
+	@PutMapping(value = "/city", consumes = "application/x-www-form-urlencoded")
+	public Result<City> updateCity(@ModelAttribute City city) {
+		return cityService.updateCity(city);
+	}
+	
+	/**
+	 * 127.0.0.1/api/city/2258 ---- delete
+	 * 删除
+	 */
+	@DeleteMapping("/city/{cityId}")
+	public Result<Object> deleteCity(@PathVariable int cityId) {
+		return cityService.deleteCity(cityId);
 	}
 }
