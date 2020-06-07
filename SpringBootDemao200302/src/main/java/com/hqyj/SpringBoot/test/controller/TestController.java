@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hqyj.SpringBoot.test.vo.ApplicationTest;
 
 @Controller
+@RequestMapping("/test")
 public class TestController {
 	@Value("${server.port}")
 	private int port;
@@ -28,7 +29,7 @@ public class TestController {
 	
 	private static final Logger LOGGR = LoggerFactory.getLogger(TestController.class);
 
-	@RequestMapping("/test/log")
+	@RequestMapping("/log")
 	@ResponseBody
 	public String logTest() {
 		//TRACE<DEBUG<INFO<WARN<ERROR
@@ -40,9 +41,9 @@ public class TestController {
 		return "This is log test.";
 	}
 /**
- * 127.0.0.1:8085/test/config
+ * 127.0.0.1/config
  */
-	@RequestMapping("/test/config")
+	@RequestMapping("/config")
 	@ResponseBody
 	public String configInfo() {
 		StringBuffer sb=new StringBuffer();
@@ -62,9 +63,9 @@ public class TestController {
 	    
 	}
 /**
- * 127.0.0.1:8086/test/desc
+ * 127.0.0.1/test/desc
  */
-	@RequestMapping("/test/dest")
+	@RequestMapping("/desc")
 	@ResponseBody
 	public String testDesc() {
 		return "This is test module desc.112233";
