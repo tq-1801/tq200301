@@ -6,4 +6,7 @@ import com.hqyj.SpringBoot.test.entity.City;
 
 public interface CityService {
 	List<City>getCitiesByCountryId(int countryID);
+	
+	City getCityByName(String cityName, String localCityName);
+	
 }
