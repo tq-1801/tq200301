@@ -18,13 +18,15 @@ import com.hqyj.SpringBoot.common.vo.SearchVo;
 import com.hqyj.SpringBoot.test.dao.CityDao;
 import com.hqyj.SpringBoot.test.entity.City;
 import com.hqyj.SpringBoot.test.service.CityService;
+import com.hqyj.SpringBoot.utils.RedisUtils;
 
 @Service
 public class CityServiceImpl implements CityService {
 	
 	@Autowired
 	private CityDao cityDao;
-
+	@Autowired
+	private RedisUtils redisUtils;
 	@Override
 	public List<City> getCitiesByCountryId(int countryId) {
 //		return cityDao.getCitiesByCountryId(countryId);
@@ -75,6 +77,11 @@ public class CityServiceImpl implements CityService {
 		cityDao.deleteCity(cityId);
 		return new Result<Object>(ResultStatus.SUCCESS.status, "Delete success.");
 	}
-	
+	@Override
+	public Object migrateCitiesByCountryId(int countryId) {
+		List<City> cities = getCitiesByCountryId(countryId);
+		redisUtils.set("cities", cities);
+		return redisUtils.get("cities");
+	}
 	
 }
