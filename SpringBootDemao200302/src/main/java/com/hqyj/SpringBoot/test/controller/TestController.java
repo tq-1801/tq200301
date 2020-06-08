@@ -43,9 +43,7 @@ public class TestController {
 	private CityService cityService;
 	@Autowired
 	private CountryService countryService;
-	/**
-	 * 127.0.0.1/test/index
-	 */
+	
 	
 	/**
 	 * 127.0.0.1/test/index
@@ -68,7 +66,7 @@ public class TestController {
 		modelmap.addAttribute("country", country);
 		modelmap.addAttribute("cities", cities);
 		modelmap.addAttribute("updateCityUri", "/api/city");
-		modelmap.addAttribute("template", "test/index");
+	//	modelmap.addAttribute("template", "test/index");
 		
 		return "index";
 	}

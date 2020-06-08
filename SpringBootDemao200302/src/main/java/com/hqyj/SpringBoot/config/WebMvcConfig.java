@@ -1,16 +1,22 @@
 package com.hqyj.SpringBoot.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.hqyj.SpringBoot.filter.ParameterFilter;
+import com.hqyj.SpringBoot.interceptor.UrlInterceptor;
 
 @Configuration
 @AutoConfigureAfter({WebMvcAutoConfiguration.class})
-public class WebMvcConfig {
+public class WebMvcConfig implements WebMvcConfigurer{
+	@Autowired
+	private UrlInterceptor urlInterceptorr;
 
 	@Bean
 	public FilterRegistrationBean<ParameterFilter> filter() {
@@ -18,4 +24,11 @@ public class WebMvcConfig {
 		register.setFilter(new ParameterFilter());
 		return register;
 	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(urlInterceptorr).addPathPatterns("/**");
+
+	}
+	
 }
