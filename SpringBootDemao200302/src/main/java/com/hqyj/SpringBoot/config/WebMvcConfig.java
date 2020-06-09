@@ -44,7 +44,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 				.addResourceLocations(ResourceUtils.FILE_URL_PREFIX + resourceConfigBean.getLocalPathForWindow());
 		} else  {
 			registry.addResourceHandler(resourceConfigBean.getResourcePathPattern())
-				.addResourceLocations("file:" + resourceConfigBean.getLocalPathForLinux());
+			.addResourceLocations(ResourceUtils.FILE_URL_PREFIX + resourceConfigBean.getLocalPathForLinux());
 		}
 	}
 	
