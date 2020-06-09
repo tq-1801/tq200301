@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hqyj.SpringBoot.config.ResourceConfigBean;
 import com.hqyj.SpringBoot.test.entity.City;
 import com.hqyj.SpringBoot.test.entity.Country;
 import com.hqyj.SpringBoot.test.service.CityService;
@@ -48,6 +50,8 @@ public class TestController {
 	private CityService cityService;
 	@Autowired
 	private CountryService countryService;
+	@Autowired
+	private ResourceConfigBean resourceConfigBean;
 	
 	@PostMapping(value = "/files", consumes = "multipart/form-data")
 	public String uploadFiles(@RequestParam MultipartFile[] files, RedirectAttributes redirectAttributes) {
@@ -58,7 +62,7 @@ public class TestController {
 			}
 
 			try {
-				String destFilePath = "F:\\upload\\" + file.getOriginalFilename();
+				String destFilePath = "F:\\upload" + File.separator + file.getOriginalFilename();
 				File destFile = new File(destFilePath);
 				file.transferTo(destFile);
 
@@ -87,10 +91,9 @@ public class TestController {
 			redirectAttributes.addFlashAttribute("message", "Please select file");
 			return "redirect:/test/index";
 		}
-
+		String resourcePath = resourceConfigBean.getResourcePath() + file.getOriginalFilename();
 		try {
-			String destFilePath = "F:\\upload\\" + file.getOriginalFilename();
-			File destFile = new File(destFilePath);
+			File destFile = new File(ResourceUtils.getURL(resourcePath).getPath());
 			file.transferTo(destFile);
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
@@ -117,8 +120,9 @@ public class TestController {
 		modelmap.addAttribute("changeType", "checkbox");
 		modelmap.addAttribute("baiduUrl", "/test/log");
 		modelmap.addAttribute("city", cities.get(0));
-		modelmap.addAttribute("shopLogo", 
-				"http://cdn.duitang.com/uploads/item/201308/13/20130813115619_EJCWm.thumb.700_0.jpeg");
+	//	modelmap.addAttribute("shopLogo", 
+	//			"http://cdn.duitang.com/uploads/item/201308/13/20130813115619_EJCWm.thumb.700_0.jpeg");
+		modelmap.addAttribute("shopLogo", "/upload/222.jpg");
 		modelmap.addAttribute("country", country);
 		modelmap.addAttribute("cities", cities);
 		modelmap.addAttribute("updateCityUri", "/api/city");
