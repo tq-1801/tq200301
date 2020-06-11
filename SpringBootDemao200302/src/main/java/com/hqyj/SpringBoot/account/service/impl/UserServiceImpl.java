@@ -37,5 +37,15 @@ public class UserServiceImpl implements UserService {
 	public User getUserByUserName(String userName) {
 		return userDao.getUserByUserName(userName);
 	}
+	@Override
+	public Result<User> login(User user) {
+		User userTemp = userDao.getUserByUserName(user.getUserName());
+		if (userTemp == null || !userTemp.getPassword().equals(MD5Util.getMD5(user.getPassword()))) {
+			return new Result<User>(ResultStatus.FAILD.status, "User name or password error.");
+		}
+
+		return new Result<User>(ResultStatus.SUCCESS.status, "Login success.", userTemp);
+	}
+
 
 }
