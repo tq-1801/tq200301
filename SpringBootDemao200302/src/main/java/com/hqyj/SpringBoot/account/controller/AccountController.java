@@ -6,9 +6,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/account")
 public class AccountController {
+	
+	/**
+	 * 127.0.0.1/account/login
+	 * @return
+	 */
 
 	@RequestMapping("/login")
 	public String loginPage() {
+		return "indexSimple";
+	}
+	/**
+	 * 127.0.0.1/account/register
+	 * @return
+	 */
+	
+	@RequestMapping("/register")
+	public String registerPag() {
 		return "indexSimple";
 	}
 }
