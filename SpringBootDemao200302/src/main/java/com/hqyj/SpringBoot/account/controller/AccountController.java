@@ -41,4 +41,13 @@ public class AccountController {
 	public String shoppingRegister() {
 		return "shoppingIndexSimple";
 	}
+	
+	/**
+	 * http://127.0.0.1/account/users
+	 * @return
+	 */
+	@RequestMapping("/users")
+	public String usersPage() {
+		return "index";
+	}
 }
