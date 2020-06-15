@@ -40,7 +40,7 @@ public interface CityDao {
 			@Result(column = "country_id", property = "countryId"),
 			@Result(column = "country_id", property = "country", 
 					javaType = Country.class, 
-					one = @One(select = "com.hqyj.SpringBootDemo.modules.test.dao.CountryDao.getCountryByCountryId"))}
+					one = @One(select = "com.hqyj.SpringBoot.test.dao.CountryDao.getCountryByCountryId"))}
 	)
 	City getCityByName( String cityName, String localCityName);
   
