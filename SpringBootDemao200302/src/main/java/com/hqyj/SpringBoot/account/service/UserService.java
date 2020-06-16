@@ -7,7 +7,6 @@ import com.hqyj.SpringBoot.common.vo.SearchVo;
 
 public interface UserService {
    
-    Result<User> insertUser(User user);
 	
 	User getUserByUserName(String userName);
 	
@@ -17,7 +16,7 @@ public interface UserService {
 	
 	User getUserByUserId(int userId);
 
-	Result<User> updateUser(User user);
-
 	Result<Object> deleteUser(int userId);
+	
+	Result<User> editUser(User user);
 }
