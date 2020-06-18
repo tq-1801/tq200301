@@ -15,8 +15,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * 用户类
  * 
- * @author: HymanHu
- * @date: 2019年11月28日
+ * @author: tq1801
+ * @date: 2020年6月10日
  */
 @Entity
 @Table(name="user")
@@ -26,6 +26,7 @@ public class User {
 	private int userId;
 	private String userName;
 	private String password;
+	private String userImg;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date createDate;
 	
@@ -80,6 +81,14 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getUserImg() {
+		return userImg;
+	}
+
+	public void setUserImg(String userImg) {
+		this.userImg = userImg;
 	}
 
 }
