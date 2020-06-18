@@ -13,7 +13,7 @@ public interface UserService {
 	User getUserByUserName(String userName);
 	
 	Result<User> login(User user);
-	
+	void logout();
 	PageInfo<User>getUsersBySearchVo(SearchVo searchVo);
 	
 	User getUserByUserId(int userId);

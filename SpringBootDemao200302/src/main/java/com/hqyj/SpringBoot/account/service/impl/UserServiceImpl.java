@@ -68,6 +68,11 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
+	public void logout() {
+		Subject subject = SecurityUtils.getSubject();
+		subject.logout();
+	}
+	@Override
 	public PageInfo<User> getUsersBySearchVo(SearchVo searchVo) {
 		searchVo.initSearchVo();
 		PageHelper.startPage(searchVo.getCurrentPage(), searchVo.getPageSize());
