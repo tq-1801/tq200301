@@ -14,6 +14,7 @@ public class AccountController {
 	private UserService userService;
 	/**
 	 * 127.0.0.1/account/login
+	 * 登录页面
 	 * @return
 	 */
 
@@ -21,7 +22,11 @@ public class AccountController {
 	public String loginPage() {
 		return "indexSimple";
 	}
-	
+	/**
+	 * http://127.0.0.1/account/logout
+	 * 退出到登录页面
+	 * @return
+	 */
 	@RequestMapping("/logout")
 	public String logOut(ModelMap modelMap) {
 		userService.logout();
@@ -30,6 +35,7 @@ public class AccountController {
 	}
 	/**
 	 * 127.0.0.1/account/register
+	 * 注册页面
 	 * @return
 	 */
 	
@@ -56,6 +62,7 @@ public class AccountController {
 	
 	/**
 	 * http://127.0.0.1/account/users
+	 * 跳转到user页面
 	 * @return
 	 */
 	@RequestMapping("/users")
@@ -65,6 +72,7 @@ public class AccountController {
 	
 	/**
 	 * http://127.0.0.1/account/roles
+	 * 跳转到roles页面
 	 */
 	@RequestMapping("/roles")
 	public String rolesPage() {
@@ -73,6 +81,7 @@ public class AccountController {
 
 	/**
 	 * http://127.0.0.1/account/resources
+	 * 跳转到resource页面
 	 */
 	@RequestMapping("/resources")
 	public String resourcesPage() {
@@ -81,6 +90,7 @@ public class AccountController {
 	
 	/**
 	 * http://127.0.0.1/account/profile
+	 * 跳转到profile页面
 	 */
 	@RequestMapping("/profile")
 	public String profilePage() {

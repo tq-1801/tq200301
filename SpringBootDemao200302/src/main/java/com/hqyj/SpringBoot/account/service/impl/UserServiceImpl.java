@@ -3,6 +3,7 @@ package com.hqyj.SpringBoot.account.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,6 +111,9 @@ public class UserServiceImpl implements UserService {
 		if (userTemp != null && userTemp.getUserId() != user.getUserId()) {
 			return new Result<User>(ResultStatus.FAILED.status, "User name is repeat.");
 		}
+		
+		user.setPassword(MD5Util.getMD5(user.getPassword()));
+		user.setCreateDate(new Date());
 		
 		//管理员编辑用户信息时，只修改用户角色
 		if (user.getUserId() > 0) {

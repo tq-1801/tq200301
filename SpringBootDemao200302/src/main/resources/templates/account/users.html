@@ -160,7 +160,9 @@ function deleteUser(userId) {
 					if (data.status == 200) {
 						initTable(DEFAULT_PAGE_SIZE);
 					} else {
-						layer.msg(data.message, {icon: 0});
+						//layer.msg(data.message, {icon: 0});
+						window.location.href = data.object;
+						
 					}
 				},
 				error : function (data) {

@@ -35,13 +35,13 @@
 							<i class="fa fa-user"></i> Account <span class="fa fa-chevron-down"></span>
 						</a>
 						<ul class="nav child_menu">
-						    <li shiro:hasAnyRoles="admin,manager,staff"><a href="/account/profile">Profile</a></li>
-							<li shiro:hasAnyRoles="admin,manager"><a href="/account/users">Users</a></li>
-							<li shiro:hasAnyRoles="admin,manager"><a href="/account/roles">Roles</a></li>
-							<li shiro:hasAnyRoles="admin,manager"><a href="/account/resources">Resources</a></li>
+						    <li shiro:hasAnyRoles="admin,manager,staff,boos"><a href="/account/profile">Profile</a></li>
+							<li shiro:hasAnyRoles="admin,manager,boos"><a href="/account/users">Users</a></li>
+							<li shiro:hasAnyRoles="admin,manager,boos"><a href="/account/roles">Roles</a></li>
+							<li shiro:hasAnyRoles="admin,manager,boos"><a href="/account/resources">Resources</a></li>
 						</ul>
 					</li>
-					<li shiro:hasAnyRoles="admin,manager,staff">
+					<li shiro:hasAnyRoles="admin,manager,staff,boos">
 						<a href="/test/index">
 							<i class="fa fa-wrench"></i> Test
 						</a>
