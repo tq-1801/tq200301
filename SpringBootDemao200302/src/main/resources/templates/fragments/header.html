@@ -5,6 +5,9 @@
 			<a id="menu_toggle"><i class="fa fa-bars"></i></a>
 		</div>
 		<nav class="nav navbar-nav">
+					<input type="hidden" id="userId" th:value="${session.userId}"/>
+			<!-- <span shiro:principal property="userId"/>
+			     <span shiro:principal property="userName"/> -->
 			<ul class=" navbar-right">
 				<li class="nav-item dropdown open" style="padding-left: 15px;">
 					<a href="javascript:;" class="user-profile dropdown-toggle"
@@ -31,7 +34,7 @@
 						aria-labelledby="navbarDropdown1">
 						<li class="nav-item"><a class="dropdown-item"> <span
 								class="image"><img src="images/img.jpg"
-									alt="Profile Image" /></span> <span> <span>John Smith</span> <span
+									alt="Profile Image" /></span> <span> <span>TQ1801</span> <span
 									class="time">3 mins ago</span>
 							</span> <span class="message"> Film festivals used to be
 									do-or-die moments for movie makers. They were where... </span>

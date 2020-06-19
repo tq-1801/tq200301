@@ -6,8 +6,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +62,11 @@ public class UserServiceImpl implements UserService {
 			
 			subject.login(usernamePasswordToken);
 			subject.checkRoles();
+			
+			Session session = subject.getSession();
+			User userTemp = (User) subject.getPrincipal();
+			session.setAttribute("userId", userTemp.getUserId());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new Result<User>(ResultStatus.FAILED.status, "User name or password error.");
@@ -71,6 +79,7 @@ public class UserServiceImpl implements UserService {
 	public void logout() {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
+		
 	}
 	@Override
 	public PageInfo<User> getUsersBySearchVo(SearchVo searchVo) {
