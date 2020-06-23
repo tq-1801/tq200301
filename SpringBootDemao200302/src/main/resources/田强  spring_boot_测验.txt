@@ -1,0 +1,152 @@
+一、选择题（共12小题，每小题2.5分，共30分）
+	以下不是spring boot优点的是 (D)
+		A．快速搭建项目
+		B．简化配置  
+		C．自动配置  
+		D．无需容器
+	Spring Boot配置，以下哪个优先级最高（A）
+		A、外置：xx.jar同目录下/config/application.properties；
+		B、外置：xx.jar同目录下/config/application.yml；
+		C、内置：src/main/resources/config；
+		D、内置：src/main/resources
+	以下log日志级别哪个最高（D）
+		A、DEBUG
+		B、INFO
+		C、WARN
+		D、ERROR
+	以下不是spring boot的核心注解的是 (D)
+		A.	@SpringBootConfiguration
+		B.	@EnableAutoConfiguration
+		C.	@ComponentScan
+		D.	@MapperScan
+	要使用springMVC的功能，以下哪个架包是必须加的 (C)
+		A．spring-boot-starter-jdbc  
+		B．spring-boot-starter-thymeleaf  
+		C．spring-boot-starter-web  
+		D．mybatis-spring-boot-starter
+	以下哪个注解不能加在类上 (B)
+		A.	@Controller
+		B.	@ResponseBody
+		C.	@RestController
+		D.	@RequestMapping
+	当控制层上有@RestController注解时，方法中返回一个字符串“<h1>Hello</h1>” 的结果是 (A)
+		A. 一级标题显示的Hello
+		B.	找不到Hello.html
+		C.	<h1>Hello</>
+		D.	Hello
+	SpringBoot项目中配置文件的格式 (C)
+		A．properties  
+		B．yml  
+		C．两者都可以
+	前台使用json参数格式，控制器consumer、参数使用的注解是（A）
+		A、application/josn ---- @RequestBody
+		B、application/josn ---- @ModelAttribute
+		C、application/x-www-form-urlencoded ---- @RequestBody
+		D、application/x-www-form-urlencoded ---- @ModelAttribute
+	@Pointcut("execution(public * com.thornBird.sbd.modules.*.controller.*.*(..))")，第三个*代表（C）
+		A、代表返回类型不限
+		B、代表module下所有子包
+		C、代表所有类
+		D、代表所有方法
+	Url匹配风格中/admin*，以下哪个匹配不正确（D）
+		A、/admin
+		B、/admin1
+		C、/admin123
+		D、/admin/1
+	Mybatis框架中，插入数据使用那个注解（B）
+		A、@Update
+		B、@Insert
+		C、@Select
+		D、@InsertMapping
+二、填空题（共5小题，每小题5分，共25分）
+	Java配置依赖的2个注解是_@Bean__________，___@Configuration_________；
+	
+	修改tomcat端口号为9090应该怎么写？在servler.xml中找到：
+                                                          <Connector port="8080" protocol="HTTP/1.1" 
+                                                            connectionTimeout="20000" 
+                                                            redirectPort="8443" />
+                                                            然后将8080改成9090_______；
+	自定义拦截器需要实现__HandlerInterceptor______接口；
+	
+	过滤器需要使用____@WebFilter______注解；
+	
+	上传文件，使用__@RequestParam MultipartFile file__接收文件对象，consumer使用_multipart/form-data_____；
+	
+三、问答题（每题5分）
+	简述Spring
+    答：Spring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，它是为了解决企业应用开发的复杂性而创建的。
+	   框架的主要优势之一就是其分层架构，分层架构允许使用者选择使用哪一个组件，同时为 J2EE 应用程序开发提供集成的框架。
+	   Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅限于服务器端的开发。从简单性、可测试性和松耦合的角度而言，任何Java应用都可以从Spring中受益。
+	   Spring的核心是控制反转（IoC）和面向切面（AOP）。简单来说，Spring是一个分层的JavaSE/EEfull-stack(一站式) 轻量级开源框架。
+	
+	简述Git使用流程，写几个常用Git命令
+	答：git使用流程：ide代码变更->本地代码仓库（commit）->提交到远程代码仓库（push）
+	    常用命令：clone、branch、commit、push、pull、merge、revert
+		
+	简述敏捷开发、Scrum流程；
+	答：敏捷开发是以客户需求为核心，高效、迭代增量开发，将大项目拆分成小项目，分别独立完成运行，控制时间周期，以任务优先级，完成功能模块，然后根据客户的反馈持续集成开发；
+	    Scrum流程（敏捷项目管理）：将一个大的需求，预估总的时间，比如说3个月完成，行程一个sprint（周期），划分大的任务列表，比如前端、service、db等；
+                                   计划会议，将大的任务列表再次拆分，细化成issue，每个issue开发周期控制在1-2天，分派到个人头上
+	简述shiro两大功能实现流程；
+	答：身份认证实现流程：调用 Subject.login(token) 进行登录验证->Authenticator 把相应的 token 传入 Realm
+	     shiro授权的执行流程:对subject进行授权，调用方法isPermitted,SecurityManager执行授权，通过ModularRealmAuthorizer执行授权,
+                              ModularRealmAuthorizer执行realm（自定义的Realm）从数据库查询权限数据,调用realm的授权方法：doGetAuthorizationInfo
+                              realm从数据库查询权限数据，返回ModularRealmAuthorizer  
+                               ModularRealmAuthorizer调用PermissionResolver进行权限串比对
+                               如果比对后，isPermitted中"permission串"在realm查询到权限数据中，说明用户访问permission串有权限，否则没有权限，抛出异常。
+		                      
+	    
+四、编程题（共2小题，1题12分，2题13分，共25分）
+	访问控制层，将一个List装入requset中，再在页面上以表格的形式显示出来
+	 package com.hqyj.SpringBoot.modules.test;
+import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+@Controller("/testController")
+@RequestMapping("/test")
+public class TestController {
+	@RequestMapping("/test")
+	public String testList(HttpServletRequest req) {
+		ArrayList<User> userList = new ArrayList<User>();
+		userList.add(new User(16, "zhangsan"));
+		userList.add(new User(18, "wangwu"));
+		req.setAttribute("userList", userList);
+		return "index";
+	}
+}
+
+
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+<script src="<%=basePath%>js/jquery-3.2.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<table>
+		<tbody>
+			<c:forEach items="${userList}" var="user">
+				<tr>
+					<td>${user.age }</td>
+					<td>${user.name }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</body>
+</html>
+	
+请写出重定向到某个页面的代码
+	
+return "redirect:index";
