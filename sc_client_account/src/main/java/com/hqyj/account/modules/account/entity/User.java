@@ -20,11 +20,10 @@ public class User implements Serializable{
 	private String userImg;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date createDate;
-
 	private String accountName;
-
 	private boolean rememberMe;
 	
+	List<City>cities;
 
 	public int getUserId() {
 		return userId;
@@ -80,6 +79,14 @@ public class User implements Serializable{
 
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
+	}
+
+	public List<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(List<City> cities) {
+		this.cities = cities;
 	}
 
 
